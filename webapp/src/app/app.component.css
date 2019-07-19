@@ -1,0 +1,14 @@
+.col-lg-1 {
+    border: 1px solid black
+}
+
+.row{
+    margin-bottom: 50px
+}
+.container {
+    margin-top: 50px;
+    max-width: 90%
+}
+.col-lg-2 {
+    border: 1px solid green
+}

@@ -1,0 +1,20 @@
+<!--{{ sezione | json}}-->
+
+<!--{{ nastri | json }}-->
+<div class="container">
+  <div class="row">
+    <div class="row" *ngFor="let a of sezioni">
+      <div class="col-lg-2">
+        Sezione {{ a.id}}
+      </div>
+      <div class="col-lg-1" *ngFor="let nastro of getNastriFromSezione(a.id)">
+        <div id="nastro.id">
+          Nastro {{nastro.id}}
+          Consumo: 0
+          Velocità: 0
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

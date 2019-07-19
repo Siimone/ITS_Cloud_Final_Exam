@@ -1,0 +1,20 @@
+{
+  "name": "dare_esame",
+  "version": "1.0.0",
+  "description": "TSAC2 2019 Final Exam",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simone Da Re",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "pg": "^7.11.0",
+    "redis": "^2.8.0",
+    "socket.io": "^2.2.0"
+  }
+}
