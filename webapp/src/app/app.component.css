@@ -7,7 +7,7 @@
 }
 .container {
     margin-top: 50px;
-    max-width: 90%
+    max-width: 99%
 }
 .col-lg-2 {
     border: 1px solid green
@@ -16,4 +16,16 @@
 .danger{
     background-color: red;
     color: white
+}
+
+@media (min-width: 992px) {
+    .col-lg-1 {
+        -ms-flex: 0 0 10.333333%;
+        flex: 0 0 10.333333%;
+        max-width: 10.3%;
+    }
+}
+
+.section-id{
+    max-width: 5%
 }
