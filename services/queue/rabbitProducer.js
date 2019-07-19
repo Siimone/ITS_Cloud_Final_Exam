@@ -25,7 +25,6 @@ async function init() {
 }
 
 push = async (queue, data) => {
-    // console.log(`Sending ${data} to ${queue}`)
     if(rabbitConnection === undefined || rabbitConnection === null) {
         init().then(function(res) {
             res.createChannel(function(error1, channel) {
