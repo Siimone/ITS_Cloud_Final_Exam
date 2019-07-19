@@ -20,8 +20,8 @@ L'inserimento nella UI dell'ID (evidenziato dal simbolo ```#```) aiuterà l'uten
 Durante l'analisi della consegna ho capito come uno punti più importanti di questa applicazione fosse quello della velocità nel comunicare i guasti.
 Per questo ho utilizzato una sistema di code basato su <b>RabbitMQ</b>.
 In particolare ho utilizzato <b>due code</b>:
-- coda <i>General</i> in cui vengono gestite le rilevazioni con valori nella norma
-- coda <i>Warning</i> per i messaggi contenenti rilevazioni di pericolo.
+- coda <i>General</i> in cui vengono gestite le rilevazioni con <b>valori nella norma</b>
+- coda <i>Warning</i> per i messaggi contenenti <b>rilevazioni di pericolo</b>.
 
 Il motivo di questa scelta architetturale è molto semplice:
 un messaggio di pericolo non può aspettare i messaggi meno importanti, che potrebbero rallentare l'intervento sulla macchina.
