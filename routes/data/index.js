@@ -11,21 +11,20 @@ producer.init();
 router.post('/', async (req, res) => {
     const body = req.body
     if(body.id_nastro && body.timestamp && (body.type === 1 || body.type === 0) && body.value){
-        console.log('Pusho', body)
+        console.log('Received from REST API', body)
         if(body.type === 0) {
             // Ho ricevuto una velocità
             if(validatorService.isValidSpeed(body.value)) {
-                dbService.insertMessage(body)
+                producer.pushOnQueue(process.env.RABBIT_QUEUE_GENERAL, body)
             } else {
-                dbService.insertWarning(body)
-                producer.pushOnQueue(proces.env., { bus_id: body.bus_id, timestamp: body.timestamp, lat: body.lat, lon: body.lon })
+                producer.pushOnQueue(process.env.RABBIT_QUEUE_WARNINGS, body)
             }
         } else if(body.type === 1) {
             // Ho ricevuto un consumo
             if(validatorService.isValidConsumption(body.value)) {
-                dbService.insertMessage(body)
+                producer.pushOnQueue(process.env.RABBIT_QUEUE_GENERAL, body)
             } else {
-                dbService.insertWarning(body)
+                producer.pushOnQueue(process.env.RABBIT_QUEUE_WARNINGS, body)
             }
         }
 

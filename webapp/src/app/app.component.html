@@ -1,20 +1,18 @@
 <!--{{ sezione | json}}-->
-
+<h1 class="text-center pt-1">MondoClean</h1>
 <!--{{ nastri | json }}-->
-<div class="container">
-  <div class="row">
+<div class="container" *ngIf="nastri?.length">
     <div class="row" *ngFor="let a of sezioni">
-      <div class="col-lg-2">
+      <div class="col-lg-1">
         Sezione {{ a.id}}
       </div>
       <div class="col-lg-1" *ngFor="let nastro of getNastriFromSezione(a.id)">
-        <div id="nastro.id">
-          Nastro {{nastro.id}}
-          Consumo: 0
-          Velocità: 0
+        <div id="{{nastro.id}}">
+          #{{nastro.id}}<br>
+          <span id="consumption-{{nastro.id}}">- W</span><br>
+          <span id="speed-{{nastro.id}}">- m/s</span>
         </div>
       </div>
     </div>
-  </div>
 </div>
 <router-outlet></router-outlet>

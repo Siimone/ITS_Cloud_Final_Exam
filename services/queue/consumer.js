@@ -27,24 +27,27 @@ amqp.connect(rabbitmqSettings, function(error0, connection) {
                 console.log(error1);
             }
             const queue = 'hello';
-            channel.assertQueue(process.env.RABBIT_QUEUE_LOCATIONS, {
+            channel.assertQueue(process.env.RABBIT_QUEUE_GENERAL, {
                 durable: false
             });
 
-            channel.assertQueue(process.env.RABBIT_QUEUE_DOORS, {
+            channel.assertQueue(process.env.RABBIT_QUEUE_WARNINGS, {
                 durable: false
             });
 
-            channel.consume(process.env.RABBIT_QUEUE_LOCATIONS, function(msg) {
-                console.log(`Received ${msg.content.toString()}`);
-                const newLocation = JSON.parse(msg.content.toString());
-                dbService.insertLocation(newLocation.bus_id, newLocation.timestamp, newLocation.lat, newLocation.lon);
-                io.emit(process.env.RABBIT_QUEUE_LOCATIONS, { bus_id: newLocation.bus_id, lat: newLocation.lat + increment, lon: newLocation.lon })
+            channel.consume(process.env.RABBIT_QUEUE_GENERAL, function(msg) {
+                console.log(`Received ${msg.content}`);
+                const obj = JSON.parse(msg.content.toString())
+                dbService.insertMessage(obj)
+                io.emit(process.env.RABBIT_QUEUE_GENERAL, obj)
             }, {
                 noAck: true
             });
-            channel.consume(process.env.RABBIT_QUEUE_DOORS, function(msg) {
-                console.log("RECEIVED NEW LOCATION", msg.content.toString());
+            channel.consume(process.env.RABBIT_QUEUE_WARNINGS, function(msg) {
+                console.log(`Received ${msg.content}`);
+                const obj = JSON.parse(msg.content.toString())
+                dbService.insertWarning(obj)
+                io.emit(process.env.RABBIT_QUEUE_WARNINGS, obj)
             }, {
                 noAck: true
             });

@@ -3,7 +3,7 @@
 }
 
 .row{
-    margin-bottom: 50px
+    margin-bottom: 20px
 }
 .container {
     margin-top: 50px;
@@ -11,4 +11,9 @@
 }
 .col-lg-2 {
     border: 1px solid green
+}
+
+.danger{
+    background-color: red;
+    color: white
 }

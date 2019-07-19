@@ -63,6 +63,7 @@ getNastri = async() => {
 }
 
 insertWarning = async (message) => {
+    console.log('ON DB', message)
     return new Promise((resolve, reject) => {
         pool.query(
             'INSERT INTO warning (id_nastro, type, value) VALUES ($1, $2, $3)',
@@ -83,6 +84,7 @@ insertWarning = async (message) => {
 }
 
 insertMessage = async (message) => {
+    console.log('ON DB', message)
     return new Promise((resolve, reject) => {
         pool.query(
             'INSERT INTO messaggio (id_nastro, type, value) VALUES ($1, $2, $3)',

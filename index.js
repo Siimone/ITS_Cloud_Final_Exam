@@ -17,16 +17,12 @@ global.io = require('socket.io')(server)
 
 const dbService = require('./services/db')
 // dbService.initNastri();
-
-const redisService = require('./services/redis')
 const consumer = require('./services/queue/consumer')
 
 const webappRouter = require('./routes/webapp')
 const dataRouter = require('./routes/data')
 
 dbService.testConnection()
-redisService.testConnection()
-
 
 io.on('connection', function(socket){
     console.log('SOCKET.IO OK!')
