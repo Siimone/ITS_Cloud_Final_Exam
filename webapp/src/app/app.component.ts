@@ -56,7 +56,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    const socket = io.connect(`${APIEndpoint}:3000`);
+    const socket = io.connect(`${APIEndpoint}`);
     socket.on('connect', function () {
       console.log('Connected to WS server');
     });

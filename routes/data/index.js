@@ -34,9 +34,4 @@ router.post('/', async (req, res) => {
     res.json({ result: 1 })
 })
 
-router.get('/', async (req, res) => {
-    // global.io.emit('locations', { bus_id: 1, lat: 2, lon: 3})
-    // res.json({route: '/data'})
-})
-
 module.exports = router

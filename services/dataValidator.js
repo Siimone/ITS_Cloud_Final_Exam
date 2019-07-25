@@ -9,7 +9,7 @@ isValidSpeed = function(speed) {
 }
 
 isValidConsumption = function(consumption) {
-    if(consumption > 60)
+    if(consumption > 40)
         return false
     else
         return true
